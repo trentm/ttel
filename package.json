@@ -1,0 +1,17 @@
+{
+  "name": "ttel",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "commonjs",
+  "main": "lib/ttel.js",
+  "scripts": {
+    "collector": "npx -y @elastic/mockotlpserver -o summary,spacer",
+    "start": "OTEL_SERVICE_NAME=myapp node --import=./lib/ttel.js app.js"
+  },
+  "dependencies": {
+    "@opentelemetry/instrumentation-http": "^0.212.0",
+    "@opentelemetry/instrumentation-undici": "^0.22.0",
+    "@opentelemetry/sdk-node": "^0.212.0"
+  }
+}
