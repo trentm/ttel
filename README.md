@@ -29,7 +29,7 @@ node app.js
 vs.
 
 ```
-npm install [-g] ttel     # The big benefit of being built-in.
+npm install [-g] ttel     # A benefit of being built-in is no separate install.
 
 # export OTEL_EXPORTER_OTLP_ENDPOINT=https://collector.example.com:4318
 # export OTEL_EXPORTER_OTLP_HEADERS="Authorization=..."
@@ -40,26 +40,18 @@ export NODE_OPTIONS="--import=ttel"
 node app.js
 ```
 
-## Other usages
+# Attempts
 
-Theoretically could "avoid" separate install step with `npx` to launch.
-Though really an `npx`-based thing is only useful for dev and demo.
+Each subsection here is an attempt at instrumenting `app.js` with OTel JS,
+progressively trying to simplify and strip it down. One of the goals is to
+see how much "bloat" we are talking about currently and in the limit.
 
-```
-npx -y ttel node app.js
-# Or even:
-#   npx -y ttel app.js
-```
+## 1.x: using `@opentelemetry/sdk-node`
 
-When file-based config is supported:
+[notes](./docs/1.x-using-otel-node-sdk.md)
 
 ```
-export OTEL_CONFIG_FILE=./my-otel.yaml
-export NODE_OPTIONS="--import=ttel"
-node app.js
+% du -sh node_modules
+ 54M	node_modules
 ```
-
-# 1.x: OTel using `@opentelemetry/sdk-node`
-
-TODO
 
