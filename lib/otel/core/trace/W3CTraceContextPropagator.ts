@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
-import {
+import type {
   Context,
-  isSpanContextValid,
   SpanContext,
   TextMapGetter,
   TextMapPropagator,
   TextMapSetter,
+} from '@opentelemetry/api';
+import {
+  isSpanContextValid,
   trace,
   TraceFlags,
 } from '@opentelemetry/api';

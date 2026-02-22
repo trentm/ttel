@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import { Exception } from '@opentelemetry/api';
+import type { Exception } from '@opentelemetry/api';
 import { loggingErrorHandler } from './logging-error-handler';
-import { ErrorHandler } from './types';
+import type { ErrorHandler } from './types';
 
 /** The global error handler delegate */
 let delegateHandler = loggingErrorHandler();

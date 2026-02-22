@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
-import {
+import type {
   BaggageEntry,
   Context,
-  propagation,
   TextMapGetter,
   TextMapPropagator,
   TextMapSetter,
+} from '@opentelemetry/api';
+import {
+  propagation,
 } from '@opentelemetry/api';
 
 import { isTracingSuppressed } from '../../trace/suppress-tracing';

@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-import { diag, AttributeValue, Attributes } from '@opentelemetry/api';
+import type { AttributeValue, Attributes } from '@opentelemetry/api';
+import { diag } from '@opentelemetry/api';
 
 export function sanitizeAttributes(attributes: unknown): Attributes {
   const out: Attributes = {};

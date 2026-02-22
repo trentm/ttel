@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-import { diag, Exception } from '@opentelemetry/api';
-import { ErrorHandler } from './types';
+import type { Exception } from '@opentelemetry/api';
+import { diag } from '@opentelemetry/api';
+import type { ErrorHandler } from './types';
 
 /**
  * Returns a function that logs an error using the provided logger, or a

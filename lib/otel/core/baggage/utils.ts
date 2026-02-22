@@ -13,9 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {
+import type {
   Baggage,
   BaggageEntryMetadata,
+} from '@opentelemetry/api';
+import {
   baggageEntryMetadataFromString,
 } from '@opentelemetry/api';
 import {
