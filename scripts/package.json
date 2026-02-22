@@ -1,0 +1,12 @@
+{
+  "name": "ttel scripts",
+  "version": "0.1.0",
+  "description": "separate package for scripts to keep devDeps clean at top-level",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "commonjs",
+  "scripts": {},
+  "dependencies": {
+    "amaro": "^1.1.7"
+  }
+}
