@@ -46,6 +46,10 @@ Each subsection here is an attempt at instrumenting `app.js` with OTel JS,
 progressively trying to simplify and strip it down. One of the goals is to
 see how much "bloat" we are talking about currently and in the limit.
 
+(Note that I have not included an attempt using `@opentelemetry/auto-instrumentations-node`
+because it includes 41 instrumentations and 5 cloud-related resource detectors
+that aren't relevant for comparison with #61907.)
+
 ## 1.x: using `@opentelemetry/sdk-node`
 
 [notes](./docs/1.x-using-otel-node-sdk.md)
