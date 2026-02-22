@@ -78,4 +78,5 @@ a little bit, though not spectacularly.
 ```
 
 - https://github.com/trentm/ttel/blob/2.x/lib/sdk.js
+- The main diff to 1.x: https://github.com/trentm/ttel/compare/1.x...2.x#diff-e8375fb7b08ee24ea1262c07ab1fd6eefdeadd2625c47e2219f34ae7699f4475
 - [Details.](./docs/1.x-using-otel-node-sdk.md)
