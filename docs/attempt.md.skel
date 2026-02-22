@@ -1,0 +1,31 @@
+Some data from `ttel@TODO.x`: https://github.com/trentm/ttel/blob/TODO.x/
+
+# notes
+
+TODO explain
+
+# install stats
+
+```
+% npm ls
+TODO
+
+% du -sh node_modules
+TODO
+```
+
+# npm start
+
+```
+% npm start
+TODO
+```
+
+# telemetry summary
+
+A summary of OTLP telemetry collected from `npm run collector`:
+
+```
+TODO
+```
+

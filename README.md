@@ -52,10 +52,30 @@ that aren't relevant for comparison with #61907.)
 
 ## 1.x: using `@opentelemetry/sdk-node`
 
-[notes](./docs/1.x-using-otel-node-sdk.md)
+Let's start with using the `NodeSDK` class that is an (experimental, i.e. 0.x)
+convenience for setting up providers et al for all signals, exporters, resource detectors, etc.
+
+The main bit is: https://github.com/trentm/ttel/blob/1.x/lib/sdk.js#L5-L21
 
 ```
 % du -sh node_modules
  54M	node_modules
 ```
 
+[Details.](./docs/1.x-using-otel-node-sdk.md)
+
+
+## 2.x: using lower-level OTel JS SDK primitives
+
+The `sdk-node` package includes all the signals, all the exporter flavours, etc.
+If we use the lower-level primitives (mostly from stable `1.x` SDK packages),
+and limit to tracing and the "http+json" flavour of OTLP, then we can reduce
+a little bit, though not spectacularly.
+
+```
+% du -sh node_modules
+ 41M	node_modules
+```
+
+- https://github.com/trentm/ttel/blob/2.x/lib/sdk.js
+- [Details.](./docs/1.x-using-otel-node-sdk.md)
