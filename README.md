@@ -94,8 +94,10 @@ HTTP tracing example we've been using.
 696K	node_modules
 ```
 
-- The main two changes are: XXX
-- full changes to 2.x: XXX
+- The main changes are:
+    1. Tweaks to opentelemetry-js.git packages to strip out things like metrics, logs, protobuf: https://github.com/open-telemetry/opentelemetry-js/compare/main...trentm:opentelemetry-js:trentm-strip-for-parts
+    2. A script that (a) removes cruft from `node_modules/@opentelemetry/...` and (b) bundles each package with esbuild to reduce each to a single file: https://github.com/trentm/ttel/blob/main/scripts/reup.sh
+- Full changes to 2.x: https://github.com/trentm/ttel/compare/2.x...3.x
 
 For comparison, the bundled undici in node is ~690K.
 
