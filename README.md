@@ -26,7 +26,7 @@ export NODE_OTEL=1
 node app.js
 ```
 
-vs.
+vs. this (this is theoretical, I haven't actually published `ttel`):
 
 ```
 npm install [-g] ttel     # A benefit of being built-in is no separate install.
