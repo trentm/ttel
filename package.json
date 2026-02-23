@@ -6,6 +6,7 @@
   "type": "commonjs",
   "main": "lib/ttel.js",
   "scripts": {
+    "reup": "./scripts/reup.sh",
     "collector": "npx -y @elastic/mockotlpserver -o summary,spacer",
     "start": "OTEL_SERVICE_NAME=myapp node --import=./lib/ttel.js app.js"
   },

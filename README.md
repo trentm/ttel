@@ -80,3 +80,70 @@ a little bit, though not spectacularly.
 - https://github.com/trentm/ttel/blob/2.x/lib/sdk.js
 - The main diff to 1.x: https://github.com/trentm/ttel/compare/1.x...2.x#diff-e8375fb7b08ee24ea1262c07ab1fd6eefdeadd2625c47e2219f34ae7699f4475
 - [Details.](./docs/1.x-using-otel-node-sdk.md)
+
+## 3.x: manually stripping down OTel JS SDK packages
+
+In this attempt, I stripped out some parts of `@opentelemetry/*` package
+installs to approach a closer apples-to-apples comparison to the vanilla
+JS, included-in-core https://github.com/nodejs/node/pull/61907 code. This
+got me down from 41M to **~700K**, while requiring no usage changes for the
+HTTP tracing example we've been using.
+
+```
+% du -sh node_modules
+696K	node_modules
+```
+
+For comparison, an `npm install pino` is ~2.2M.
+
+<details>
+    <summary>The set of changes I made:</summary>
+
+- drop `*/build/{esm,esnext}` (for most packages) -> 29M
+- drop `.map` and `.d.ts` files -> 23M
+- drop deprecated bits of semconv package -> 22M
+- tree-shake otlp-transformer (just trace, no protobuf) -> 11M
+- tree-shake instrumentation (can now drop api-logs dep) -> 10M
+- apply first two "drop" bullets to otlp-exporter-base, as well -> 9M
+- drop meta files (READMEs, etc)
+- drop lingering protobufjs deps (missed above) -> 5.4M
+- drop @types/node (unused) -> 3.1M
+- drop IITM and some other deps -> 1.9M
+  (because we are comparing to #61907 which only has diagchan-based instrumentations)
+- drop a few other small things -> 1.6M
+- esbuild to bundle each dep to a single file -> 696K
+  (reduces size due to many small files each taking the min filesystem block size, 4k on my system).
+
+</details>
+
+With my changes this gets *closer* to an apples-to-apples comparison to #61907,
+but it is still covering a lot more of the OTel spec that #61907: resource detectors,
+propagator API, context API, still has the metrics parts of the "api" package,
+baggage, tracestate, SDK configurability, still has RITM for hooking, etc.
+
+<details>
+    <summary>The remaining size contributions by package</summary>
+
+```
+% du -sk node_modules/[a-z]* node_modules/@*/* | sort -n
+8	node_modules/@opentelemetry/exporter-trace-otlp-http
+12	node_modules/@opentelemetry/sdk-trace-node
+16	node_modules/@opentelemetry/context-async-hooks
+16	node_modules/module-details-from-path
+16	node_modules/ms
+20	node_modules/@opentelemetry/otlp-transformer
+28	node_modules/@opentelemetry/semantic-conventions
+32	node_modules/forwarded-parse
+32	node_modules/require-in-the-middle
+40	node_modules/@opentelemetry/instrumentation-undici
+40	node_modules/@opentelemetry/resources
+48	node_modules/@opentelemetry/otlp-exporter-base
+56	node_modules/@opentelemetry/instrumentation
+60	node_modules/@opentelemetry/core
+60	node_modules/@opentelemetry/sdk-trace-base
+60	node_modules/debug
+64	node_modules/@opentelemetry/api
+68	node_modules/@opentelemetry/instrumentation-http
+```
+
+</details>

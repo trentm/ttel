@@ -7,6 +7,7 @@
   "type": "commonjs",
   "scripts": {},
   "dependencies": {
-    "amaro": "^1.1.7"
+    "amaro": "^1.1.7",
+    "esbuild": "^0.27.3"
   }
 }
