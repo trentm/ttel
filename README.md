@@ -94,7 +94,10 @@ HTTP tracing example we've been using.
 696K	node_modules
 ```
 
-For comparison, an `npm install pino` is ~2.2M.
+- The main two changes are: XXX
+- full changes to 2.x: XXX
+
+For comparison, the bundled undici in node is ~690K.
 
 <details>
     <summary>The set of changes I made:</summary>

@@ -43,9 +43,8 @@ reup-bundle packages/opentelemetry-sdk-trace-node @opentelemetry/sdk-trace-node
 
 reup-bundle semantic-conventions @opentelemetry/semantic-conventions
 reup-bundle experimental/packages/otlp-transformer @opentelemetry/otlp-transformer
-# XXX
+# Note: Hacked otlp-exporter-base to just have the single entry point.
 reup-bundle experimental/packages/otlp-exporter-base @opentelemetry/otlp-exporter-base
-  # multiple entry points? index-node-http (could drop if no browser support)
 
 find node_modules/@opentelemetry -name "*.map" | xargs rm
 find node_modules/@opentelemetry -name "*.d.ts" | xargs rm
